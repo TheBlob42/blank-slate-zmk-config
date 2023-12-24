@@ -27,6 +27,7 @@
 
 // tri layer documentation
 // https://zmk.dev/docs/features/conditional-layers
+
 / {
       conditional_layers {
           compatible = "zmk,conditional-layers";
@@ -35,7 +36,9 @@
               then-layer = <NUM_SFT>;
           };
       };
+};
 
+/ {
       keymap {
           compatible = "zmk,keymap";
 
