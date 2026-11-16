@@ -16,6 +16,7 @@
 #define NAV_L   5
 #define MEDIA   6
 #define SYSTEM  7
+#define GAME    8
 
 
 // using layer taps on thumbs, having quick tap as well helps w/ repeating space/backspace
@@ -118,10 +119,19 @@
 &bt BT_CLR      &none      &none      &none      &none      &none      &none  &none  &none  &none     &none  &bootloader
 &none           &bt BT(0)  &bt BT(1)  &bt BT(2)  &bt BT(3)  &bt BT(4)  &none  &none  &none  &none     &none  &none
 &none           &none      &none      &none      &none      &none      &none  &none  &none  &none     &none  &none
-&bt BT_CLR_ALL  &none      &none      &none      &none      &none      &none  &none  &none  &soft_off &none  &none
+&bt BT_CLR_ALL  &none      &none      &none      &none      &none      &none  &none  &none  &soft_off &none  &to GAME
               >;
           };
 
+          game_layer {
+              label = "Game";
+              bindings = <
+&kp TAB     &kp Q      &kp W     &kp E     &kp R        &kp T      &kp Y      &kp U      &kp I      &kp O     &kp P     &kp BKSP
+&kp ESC     &kp A      &kp S     &kp D     &kp F        &kp G      &kp H      &kp J      &kp K      &kp L     &kp SEMI  &mt RCTRL SINGLE_QUOTE
+&kp LSHIFT  &kp Z      &kp X     &kp C     &kp V        &kp B      &kp N      &kp M      &kp COMMA  &kp DOT   &kp FSLH  &mt RSHIFT RET
+&kp LCTRL   &mo MEDIA  &kp LGUI  &kp LALT  &mo FKEYS_L  &kp SPACE  &kp SPACE  &mo NAV_L  &kp RALT   &kp RGUI  &to 0     &kp RCTRL
+              >;
+          };
       };
 };
 
