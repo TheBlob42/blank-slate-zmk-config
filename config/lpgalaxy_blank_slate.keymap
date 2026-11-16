@@ -40,6 +40,29 @@
 };
 
 / {
+    macros {
+        help_text: help_text {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <5>;
+            tap-ms = <5>;
+            bindings =
+                // right FN + BS = bootloader
+                // right FN + right CTRL = game mode
+                // right FN + <a-g> = bluetooth channel <1-5>
+                // right FN + left CTRL = bluetooth clear all
+                // right FN + TAB = bluetooth clear current
+                <&kp R &kp I &kp G &kp H &kp T &kp SPACE &kp F &kp N &kp SPACE &kp RBKT &kp SPACE &kp B &kp S &kp SPACE &kp LS(N0) &kp SPACE &kp B &kp O &kp O &kp T &kp L &kp O &kp A &kp D &kp E &kp R &kp RET>,
+                <&kp R &kp I &kp G &kp H &kp T &kp SPACE &kp F &kp N &kp SPACE &kp RBKT &kp SPACE &kp R &kp I &kp G &kp H &kp T &kp SPACE &kp C &kp T &kp R &kp L &kp SPACE &kp LS(N0) &kp SPACE &kp G &kp A &kp M &kp E &kp SPACE &kp M &kp O &kp D &kp E &kp RET>,
+                <&kp R &kp I &kp G &kp H &kp T &kp SPACE &kp F &kp N &kp SPACE &kp RBKT &kp SPACE &kp NON_US_BSLH &kp A &kp FSLH &kp G &kp LS(NON_US_BSLH) &kp SPACE &kp LS(N0) &kp SPACE &kp B &kp L &kp U &kp E &kp T &kp O &kp O &kp T &kp H &kp SPACE &kp C &kp H &kp A &kp N &kp N &kp E &kp L &kp SPACE &kp NON_US_BSLH &kp N1 &kp FSLH &kp N5 &kp LS(NON_US_BSLH) &kp RET>,
+                <&kp R &kp I &kp G &kp H &kp T &kp SPACE &kp F &kp N &kp SPACE &kp RBKT &kp SPACE &kp L &kp E &kp F &kp T &kp SPACE &kp C &kp T &kp R &kp L &kp SPACE &kp LS(N0) &kp SPACE &kp B &kp L &kp U &kp E &kp T &kp O &kp O &kp T &kp H &kp SPACE &kp C &kp L &kp E &kp A &kp R &kp SPACE &kp A &kp L &kp L &kp RET>,
+                <&kp R &kp I &kp G &kp H &kp T &kp SPACE &kp F &kp N &kp SPACE &kp RBKT &kp SPACE &kp T &kp A &kp B &kp SPACE &kp LS(N0) &kp SPACE &kp B &kp L &kp U &kp E &kp T &kp O &kp O &kp T &kp H &kp SPACE &kp C &kp L &kp E &kp A &kp R &kp SPACE &kp C &kp U &kp R &kp R &kp E &kp N &kp T>;
+        };
+    };
+};
+
+
+/ {
       keymap {
           compatible = "zmk,keymap";
 
@@ -116,10 +139,10 @@
           sym_layer {
               label = "System";
               bindings = <
-&bt BT_CLR      &none      &none      &none      &none      &none      &none  &none  &none  &none     &none  &bootloader
-&none           &bt BT(0)  &bt BT(1)  &bt BT(2)  &bt BT(3)  &bt BT(4)  &none  &none  &none  &none     &none  &none
-&none           &none      &none      &none      &none      &none      &none  &none  &none  &none     &none  &none
-&bt BT_CLR_ALL  &none      &none      &none      &none      &none      &none  &none  &none  &soft_off &none  &to GAME
+&bt BT_CLR      &none      &none      &none      &none      &none      &none  &none  &none  &none     &none      &bootloader
+&none           &bt BT(0)  &bt BT(1)  &bt BT(2)  &bt BT(3)  &bt BT(4)  &none  &none  &none  &none     &none      &none
+&none           &none      &none      &none      &none      &none      &none  &none  &none  &none     &help_text &none
+&bt BT_CLR_ALL  &none      &none      &none      &none      &none      &none  &none  &none  &soft_off &none      &to GAME
               >;
           };
 
